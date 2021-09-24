@@ -35,7 +35,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <summary>
         /// Ширина отрисовки истребителя
         /// </summary>
-        private readonly int airWidth = 108;
+        private readonly int airWidth = 110;
 
         /// <summary>
         /// Высота отрисовки истребителя
