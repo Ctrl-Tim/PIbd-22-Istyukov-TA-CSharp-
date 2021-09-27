@@ -87,13 +87,13 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// Инициализация свойств
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес автомобиля</param>
+        /// <param name="weight">Вес истребителя</param>
         /// <param name="mainColor">Основной цвет кузова</param>
         /// <param name="dopColor">Дополнительный цвет</param>
-        /// <param name="frontPlane">Признак наличия переднего спойлера</param>
-        /// <param name="sideBombs">Признак наличия боковых спойлеров</param>
-        /// <param name="bigBombs">Признак наличия заднего спойлера</param>
-        /// <param name="miniBombs">Признак наличия гоночной полосы</param>
+        /// <param name="frontPlane">Признак наличия переднего оперения</param>
+        /// <param name="sideBombs">Признак наличия боковых бомб</param>
+        /// <param name="bigBombs">Признак наличия дополнительных бомб</param>
+        /// <param name="miniBombs">Признак наличия турбины</param>
         public void Init(int maxSpeed, float weight, Color mainColor, Color dopColor, bool frontPlane, bool sideBombs, bool bigBombs, bool miniBombs)
         {
             MaxSpeed = maxSpeed;
@@ -106,7 +106,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             MiniBombs = miniBombs;
         }
         /// <summary>
-        /// Установка позиции автомобиля
+        /// Установка позиции истребителя
         /// </summary>
         /// <param name="x">Координата X</param>
         /// <param name="y">Координата Y</param>
@@ -166,7 +166,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         public void DrawTransport(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
-            // отрисуем сперва переднее оперение истребителя (чтобы потом отрисовка автомобиля на него "легла")
             if (FrontPlane)
             {
                 Brush plane = new SolidBrush(DopColor);
