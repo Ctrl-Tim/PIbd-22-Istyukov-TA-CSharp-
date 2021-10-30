@@ -8,55 +8,10 @@ using System.Drawing;
 namespace Lab1_PIbd_22_Istyukov_Timofey
 {
     /// <summary>
-    /// Класс отрисовки автомобиля
-    /// </summary>
-    public class FighterPlane
+    /// Класс отрисовки истребителя
+    /// </summary> 
+    class FighterPlane : WarPlane
     {
-        /// <summary>
-        /// Левая координата отрисовки истребителя
-        /// </summary>
-        private float _startPosX;
-
-        /// <summary>
-        /// Правая кооридната отрисовки истребителя
-        /// </summary>
-        private float _startPosY;
-
-        /// <summary>
-        /// Ширина окна отрисовки
-        /// </summary>
-        private int _pictureWidth;
-
-        /// <summary>
-        /// Высота окна отрисовки
-        /// </summary>
-        private int _pictureHeight;
-
-        /// <summary>
-        /// Ширина отрисовки истребителя
-        /// </summary>
-        private readonly int airWidth = 110;
-
-        /// <summary>
-        /// Высота отрисовки истребителя
-        /// </summary>
-        private readonly int airHeight = 103;
-
-        /// <summary>
-        /// Максимальная скорость
-        /// </summary>
-        public int MaxSpeed { private set; get; }
-
-        /// <summary>
-        /// Вес истребителя
-        /// </summary>
-        public float Weight { private set; get; }
-
-        /// <summary>
-        /// Основной цвет кузова
-        /// </summary>
-        public Color MainColor { private set; get; }
-
         /// <summary>
         /// Дополнительный цвет
         /// </summary>
@@ -70,7 +25,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <summary>
         /// Признак наличия боковых бомб
         /// </summary>
-
         public bool SideBombs { private set; get; }
 
         /// <summary>
@@ -87,85 +41,27 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// Инициализация свойств
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
-        /// <param name="weight">Вес истребителя</param>
+        /// <param name="weight">Вес самолёта</param>
         /// <param name="mainColor">Основной цвет кузова</param>
         /// <param name="dopColor">Дополнительный цвет</param>
-        /// <param name="frontPlane">Признак наличия переднего оперения</param>
-        /// <param name="sideBombs">Признак наличия боковых бомб</param>
-        /// <param name="bigBombs">Признак наличия дополнительных бомб</param>
-        /// <param name="miniBombs">Признак наличия турбины</param>
-        public void Init(int maxSpeed, float weight, Color mainColor, Color dopColor, bool frontPlane, bool sideBombs, bool bigBombs, bool miniBombs)
+        /// <param name="frontPlane">Признак наличия переднего спойлера</param>
+        /// <param name="sideBombs">Признак наличия боковых спойлеров</param>
+        /// <param name="bigBombs">Признак наличия заднего спойлера</param>
+        /// <param name="miniBombs">Признак наличия гоночной полосы</param>
+        public FighterPlane(int maxSpeed, float weight, Color mainColor, Color dopColor, bool frontPlane, bool sideBombs, bool bigBombs, bool miniBombs) :
+            base(maxSpeed, weight, mainColor, 110, 103)
         {
-            MaxSpeed = maxSpeed;
-            Weight = weight;
-            MainColor = mainColor;
             DopColor = dopColor;
             FrontPlane = frontPlane;
             SideBombs = sideBombs;
             BigBombs = bigBombs;
             MiniBombs = miniBombs;
         }
-        /// <summary>
-        /// Установка позиции истребителя
-        /// </summary>
-        /// <param name="x">Координата X</param>
-        /// <param name="y">Координата Y</param>
-        /// <param name="width">Ширина картинки</param>
-        /// <param name="height">Высота картинки</param>
-        public void SetPosition(int x, int y, int width, int height)
-        {
-            _startPosX = x;
-            _startPosY = y;
-            _pictureWidth = width;
-            _pictureHeight = height;
-        }
-        /// <summary>
-        /// Изменение направления пермещения
-        /// </summary>
-        ///<param name="direction">Направление</param>
-        public void MoveTransport(Direction direction)
-        {
-            float step = MaxSpeed * 100 / Weight;
-            switch (direction)
-            {
-                // вправо
-                case Direction.Right:
-                    if (_startPosX + step < _pictureWidth - airWidth)
-                    {
-                        _startPosX += step;
-                    }
-                    break;
-                //влево
-                case Direction.Left:
-                    if (_startPosX - step > 0)
-                    {
-                        _startPosX -= step;
-                    }
-                    break;
-                //вверх
-                case Direction.Up:
-                    if (_startPosY - step > 0)
-                    {
-                        _startPosY -= step;
-                    }
-                    break;
-                //вниз
-                case Direction.Down:
-                    if (_startPosY + step < _pictureHeight - airHeight)
-                    {
-                        _startPosY += step;
-                    }
-                    break;
-            }
-        }
 
-        /// <summary>
-        /// Отрисовка истребителя
-        /// </summary>
-        /// <param name="g"></param>
-        public void DrawTransport(Graphics g)
+        public override void DrawTransport(Graphics g)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(Color.Black); Brush dopBrush = new SolidBrush(DopColor);
+            // отрисуем сперва переднее оперение истребителя (чтобы потом отрисовка самолёта на него "легла")
             if (FrontPlane)
             {
                 Brush plane = new SolidBrush(DopColor);
@@ -252,55 +148,8 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                 g.DrawPolygon(pen, big_bombs2);
             }
 
-            //турбина
-            Brush brCyan = new SolidBrush(Color.DarkCyan);
-            PointF[] turbo = {
-                new PointF(_startPosX + 51, _startPosY + 42),
-                new PointF(_startPosX + 105, _startPosY + 42),
-                new PointF(_startPosX + 110, _startPosY + 44),
-                new PointF(_startPosX + 110, _startPosY + 49),
-                new PointF(_startPosX + 107, _startPosY + 51),
-                new PointF(_startPosX + 110, _startPosY + 53),
-                new PointF(_startPosX + 110, _startPosY + 58),
-                new PointF(_startPosX + 105, _startPosY + 61),
-                new PointF(_startPosX + 51, _startPosY + 61)};
-            g.FillPolygon(brCyan, turbo);
-            g.DrawPolygon(pen, turbo); //обведём
-
-            //крылья
-            Brush br = new SolidBrush(MainColor);
-            PointF[] wings = {
-                new PointF(_startPosX + 45, _startPosY + 45),
-                new PointF(_startPosX + 45, _startPosY),
-                new PointF(_startPosX + 51, _startPosY),
-                new PointF(_startPosX + 58, _startPosY + 45),
-                new PointF(_startPosX + 58, _startPosY + 58),
-                new PointF(_startPosX + 51, _startPosY + 103),
-                new PointF(_startPosX + 45, _startPosY + 103)};
-            g.FillPolygon(br, wings);
-            g.DrawPolygon(pen, wings); //обведём
-
-            //хвостовое оперение
-            PointF[] tail_plane = {
-                new PointF(_startPosX + 105, _startPosY + 28),
-                new PointF(_startPosX + 105, _startPosY + 75),
-                new PointF(_startPosX + 92, _startPosY + 65),
-                new PointF(_startPosX + 92, _startPosY + 38)};
-            g.FillPolygon(br, tail_plane);
-            g.DrawPolygon(pen, tail_plane); //обведём
-
-            //кузов
-            g.FillRectangle(br, _startPosX + 15, _startPosY + 45, 90, 13);
-            g.DrawRectangle(pen, _startPosX + 15, _startPosY + 45, 90, 13); //обведём
-
-            //нос
-            Brush brBlack = new SolidBrush(Color.Black);
-            PointF[] nose = {
-                new PointF(_startPosX + 15, _startPosY + 45),
-                new PointF(_startPosX, _startPosY + 51),
-                new PointF(_startPosX + 15, _startPosY + 58) };
-            g.FillPolygon(brBlack, nose);
-            g.DrawPolygon(pen, nose); //обведём
+            // теперь отрисуем основной кузов самолёта
+            base.DrawTransport(g);
         }
     }
 }
