@@ -46,18 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FighterAircraft.cs" />
+    <Compile Include="FighterPlane.cs" />
     <Compile Include="Direaction.cs" />
-    <Compile Include="FormFighterAircraft.cs">
+    <Compile Include="FormPlane.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFighterAircraft.Designer.cs">
-      <DependentUpon>FormFighterAircraft.cs</DependentUpon>
+    <Compile Include="FormPlane.Designer.cs">
+      <DependentUpon>FormPlane.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormFighterAircraft.resx">
-      <DependentUpon>FormFighterAircraft.cs</DependentUpon>
+    <Compile Include="Vehicle.cs" />
+    <Compile Include="WarPlane.cs" />
+    <EmbeddedResource Include="FormPlane.resx">
+      <DependentUpon>FormPlane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
