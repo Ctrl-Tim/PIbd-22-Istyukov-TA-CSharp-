@@ -10,7 +10,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
     /// <summary>
     /// Класс отрисовки автомобиля
     /// </summary>
-    public class FighterAircraft
+    public class FighterPlane
     {
         /// <summary>
         /// Левая координата отрисовки истребителя

@@ -12,7 +12,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
 {
     public partial class FormFighterAircraft : Form
     {
-        private FighterAircraft air;
+        private FighterPlane air;
 
         /// <summary>
         /// Конструктор
@@ -41,7 +41,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
          private void buttonCreate_Click(object sender, EventArgs e)
          {
              Random rnd = new Random();
-             air = new FighterAircraft();
+             air = new FighterPlane();
              air.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.DarkGreen, Color.Gray, true, true, true, true);
              air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxFighterAircraft.Width, pictureBoxFighterAircraft.Height);
              Draw();
