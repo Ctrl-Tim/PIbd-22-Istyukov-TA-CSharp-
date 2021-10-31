@@ -16,7 +16,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormFighterAircraft());
+            Application.Run(new FormPlane());
         }
     }
 }
