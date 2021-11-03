@@ -52,7 +52,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             _pictureHeight = height;
         }
 
-
         public abstract void DrawTransport(Graphics g);
 
         public abstract void MoveTransport(Direction direction);

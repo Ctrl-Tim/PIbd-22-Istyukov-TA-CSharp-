@@ -23,6 +23,16 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         }
 
         /// <summary>
+        /// Передача самолёта на форму
+        /// </summary>
+        /// <param name="air"></param>
+        public void SetAir(ITransport air)
+        {
+            this.air = air;
+            Draw();
+        }
+
+        /// <summary>
         /// Метод отрисовки самолёта
         /// </summary>
         private void Draw()
