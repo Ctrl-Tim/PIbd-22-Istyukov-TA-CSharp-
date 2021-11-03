@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Lab1_PIbd_22_Istyukov_Timofey
 {
-    interface ITransport
+    public interface ITransport
     {
         /// <summary>
         /// Установка позиции
