@@ -61,6 +61,7 @@
       <DependentUpon>FormPlane.cs</DependentUpon>
     </Compile>
     <Compile Include="Hangar.cs" />
+    <Compile Include="HangarCollection.cs" />
     <Compile Include="ITransport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
