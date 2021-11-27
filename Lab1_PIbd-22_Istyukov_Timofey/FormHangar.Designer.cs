@@ -36,6 +36,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.labelIndex = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxTakeAir = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxNewLevelName = new System.Windows.Forms.MaskedTextBox();
+            this.buttonAddHangar_Click = new System.Windows.Forms.Button();
+            this.listBoxHangars = new System.Windows.Forms.ListBox();
+            this.buttonDelHangar_Click = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBoxTakeAir.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +56,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonSetWarPlane_Click
             // 
-            this.buttonSetWarPlane_Click.Location = new System.Drawing.Point(743, 11);
+            this.buttonSetWarPlane_Click.Location = new System.Drawing.Point(744, 254);
             this.buttonSetWarPlane_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetWarPlane_Click.Name = "buttonSetWarPlane_Click";
             this.buttonSetWarPlane_Click.Size = new System.Drawing.Size(137, 39);
@@ -62,7 +67,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonSetFighterPlane_Click
             // 
-            this.buttonSetFighterPlane_Click.Location = new System.Drawing.Point(743, 54);
+            this.buttonSetFighterPlane_Click.Location = new System.Drawing.Point(744, 297);
             this.buttonSetFighterPlane_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetFighterPlane_Click.Name = "buttonSetFighterPlane_Click";
             this.buttonSetFighterPlane_Click.Size = new System.Drawing.Size(137, 37);
@@ -106,18 +111,76 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.groupBoxTakeAir.Controls.Add(this.labelIndex);
             this.groupBoxTakeAir.Controls.Add(this.buttonTakeAir_Clic);
             this.groupBoxTakeAir.Controls.Add(this.maskedTextBox);
-            this.groupBoxTakeAir.Location = new System.Drawing.Point(743, 106);
+            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 361);
             this.groupBoxTakeAir.Name = "groupBoxTakeAir";
-            this.groupBoxTakeAir.Size = new System.Drawing.Size(137, 79);
+            this.groupBoxTakeAir.Size = new System.Drawing.Size(137, 88);
             this.groupBoxTakeAir.TabIndex = 14;
             this.groupBoxTakeAir.TabStop = false;
             this.groupBoxTakeAir.Text = "Забрать самолёт";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(786, 9);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Ангары:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // textBoxNewLevelName
+            // 
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(743, 31);
+            this.textBoxNewLevelName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(138, 20);
+            this.textBoxNewLevelName.TabIndex = 16;
+            this.textBoxNewLevelName.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.textBoxNewLevelName_MaskInputRejected);
+            // 
+            // buttonAddHangar_Click
+            // 
+            this.buttonAddHangar_Click.Location = new System.Drawing.Point(743, 55);
+            this.buttonAddHangar_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddHangar_Click.Name = "buttonAddHangar_Click";
+            this.buttonAddHangar_Click.Size = new System.Drawing.Size(137, 20);
+            this.buttonAddHangar_Click.TabIndex = 17;
+            this.buttonAddHangar_Click.Text = "Добавить ангар";
+            this.buttonAddHangar_Click.UseVisualStyleBackColor = true;
+            this.buttonAddHangar_Click.Click += new System.EventHandler(this.buttonAddHangar_Click_Click);
+            // 
+            // listBoxHangars
+            // 
+            this.listBoxHangars.FormattingEnabled = true;
+            this.listBoxHangars.Location = new System.Drawing.Point(743, 79);
+            this.listBoxHangars.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxHangars.Name = "listBoxHangars";
+            this.listBoxHangars.Size = new System.Drawing.Size(138, 82);
+            this.listBoxHangars.TabIndex = 18;
+            this.listBoxHangars.SelectedIndexChanged += new System.EventHandler(this.listBoxHangars_SelectedIndexChanged);
+            // 
+            // buttonDelHangar_Click
+            // 
+            this.buttonDelHangar_Click.Location = new System.Drawing.Point(743, 165);
+            this.buttonDelHangar_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelHangar_Click.Name = "buttonDelHangar_Click";
+            this.buttonDelHangar_Click.Size = new System.Drawing.Size(137, 20);
+            this.buttonDelHangar_Click.TabIndex = 19;
+            this.buttonDelHangar_Click.Text = "Удалить ангар";
+            this.buttonDelHangar_Click.UseVisualStyleBackColor = true;
+            this.buttonDelHangar_Click.Click += new System.EventHandler(this.buttonDelHangar_Click_Click);
             // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonDelHangar_Click);
+            this.Controls.Add(this.listBoxHangars);
+            this.Controls.Add(this.buttonAddHangar_Click);
+            this.Controls.Add(this.textBoxNewLevelName);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBoxTakeAir);
             this.Controls.Add(this.buttonSetFighterPlane_Click);
             this.Controls.Add(this.buttonSetWarPlane_Click);
@@ -128,6 +191,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.groupBoxTakeAir.ResumeLayout(false);
             this.groupBoxTakeAir.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -140,5 +204,10 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         private System.Windows.Forms.Label labelIndex;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.GroupBox groupBoxTakeAir;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox textBoxNewLevelName;
+        private System.Windows.Forms.Button buttonAddHangar_Click;
+        private System.Windows.Forms.ListBox listBoxHangars;
+        private System.Windows.Forms.Button buttonDelHangar_Click;
     }
 }
