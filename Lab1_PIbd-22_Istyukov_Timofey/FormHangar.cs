@@ -188,7 +188,9 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             {
                 if (hangarCollection.LoadData(openFileDialog.FileName))
                 {
-                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information); ReloadLevels(); Draw();
+                    MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ReloadLevels();
+                    Draw();
                 }
                 else
                 {
