@@ -29,5 +29,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// </summary>
         /// <param name="g"></param>
         void DrawTransport(Graphics g);
+
+        /// <summary>
+        /// Смена основного цвета
+        /// </summary>
+        /// <param name="color"></param>
+        void SetMainColor(Color color);
     }
 }

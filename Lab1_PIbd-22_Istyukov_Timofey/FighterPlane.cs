@@ -151,5 +151,14 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // теперь отрисуем основной кузов самолёта
             base.DrawTransport(g);
         }
+
+        /// <summary>
+        /// Смена дополнительного цвета
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }
