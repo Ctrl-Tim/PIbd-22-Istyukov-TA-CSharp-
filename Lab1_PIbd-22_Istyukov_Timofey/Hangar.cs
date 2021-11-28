@@ -16,7 +16,12 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <summary>
         /// Массив объектов, которые храним
         /// </summary>
-        private readonly T[] _places;
+        private readonly List<T> _places;
+
+        /// <summary>
+        /// Максимальное количество мест в ангаре
+        /// </summary>
+        private readonly int _maxCount;
 
         /// <summary>
         /// Ширина окна отрисовки
@@ -47,9 +52,10 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            _maxCount = width * height;
             pictureWidth = picWidth;
             pictureHeight = picHeight;
+            _places = new List<T>();
         }
 
         /// <summary>
@@ -61,15 +67,12 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <returns></returns>
         public static int operator +(Hangar<T> h, T air)
         {
-            for (int i = 0; i < h._places.Length; i++)
+            if (h._places.Count >= h._maxCount)
             {
-                if (h._places[i] == null)
-                {
-                    h._places[i] = air;
-                    return i;
-                }
+                return -1;
             }
-            return -1;
+            h._places.Add(air);
+            return 1;
         }
 
         /// <summary>
@@ -81,13 +84,13 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <returns></returns>
         public static T operator -(Hangar<T> h, int index)
         {
-            if (index < h._places.Length && h._places[index] != null)
+            if (index < 0 || index > h._places.Count)
             {
-                T obj = h._places[index];
-                h._places[index] = null;
-                return obj;
+                return null;
             }
-            return null;
+            T obj = h._places[index];
+            h._places.RemoveAt(index);
+            return obj;
         }
 
         /// <summary>
@@ -102,7 +105,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             int y = 0;
             int j = 0;
 
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
                 if (j >= pictureWidth / _placeSizeWidth)
                 {
@@ -115,7 +118,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                 j++;
             }
 
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
                 _places[i]?.DrawTransport(g);
             }
