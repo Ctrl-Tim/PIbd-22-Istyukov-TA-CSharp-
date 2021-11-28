@@ -94,60 +94,16 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             }
         }
 
-
         /// <summary>
-        /// Обработка нажатия кнопки "Припарковать военный самолёт"
+        /// Обработка нажатия кнопки "Добавить самолёт"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param> 
-        private void buttonSetWarPlane_Click_Click(object sender, EventArgs e)
+        private void buttonSetAir_Click_Click(object sender, EventArgs e)
         {
-            if (listBoxHangars.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    var air = new WarPlane(100, 1000, dialog.Color);
-                    if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + air == 1)
-                    {
-                        Draw();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ангар переполнен");
-                    }
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Обработка нажатия кнопки "Припарковать истребитель"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>   
-        private void buttonSetFighterPlane_Click_Click_1(object sender, EventArgs e)
-        {
-            if (listBoxHangars.SelectedIndex > -1)
-            {
-                ColorDialog dialog = new ColorDialog();
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    ColorDialog dialogDop = new ColorDialog();
-                    if (dialogDop.ShowDialog() == DialogResult.OK)
-                    {
-                        var air = new FighterPlane(100, 1000, dialog.Color, dialogDop.Color, true, true, true, true);
-                        if (hangarCollection[listBoxHangars.SelectedItem.ToString()] + air == 1)
-                        {
-                            Draw();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ангар переполнен");
-                        }
-                    }
-                }
-            }
+            var formCarConfig = new FormAirConfig();
+            formCarConfig.AddEvent(AddAir);
+            formCarConfig.Show();
         }
 
         /// <summary>
@@ -182,15 +138,23 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             Draw();
         }
 
-
-        private void label3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Метод добавления самолёта
+        /// </summary>
+        /// <param name="car"></param>
+        private void AddAir(Vehicle air)
         {
-
-        }
-
-        private void textBoxNewLevelName_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
+            if (air != null && listBoxHangars.SelectedIndex > -1)
+            {
+                if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + air == 1)
+                {
+                    Draw();
+                }
+                else
+                {
+                    MessageBox.Show("Самолёт не удалось поставить");
+                }
+            }
         }
     }
 }

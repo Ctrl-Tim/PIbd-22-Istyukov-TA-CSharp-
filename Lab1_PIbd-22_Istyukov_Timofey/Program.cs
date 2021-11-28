@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace Lab1_PIbd_22_Istyukov_Timofey
 {
+    public delegate void AirDelegate(Vehicle air);
+
     static class Program
     {
         /// <summary>
@@ -20,3 +22,4 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         }
     }
 }
+
