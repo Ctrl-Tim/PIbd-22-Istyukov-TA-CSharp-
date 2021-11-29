@@ -69,7 +69,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (h._places.Count >= h._maxCount)
             {
-                return -1;
+                throw new HangarOverflowException();
             }
             h._places.Add(air);
             return 1;
@@ -84,13 +84,13 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <returns></returns>
         public static T operator -(Hangar<T> h, int index)
         {
-            if (index < 0 || index > h._places.Count)
+            if (index < -1 || index > h._places.Count)
             {
-                return null;
+                throw new HangarNotFoundException(index);
             }
-            T obj = h._places[index];
+            T air = h._places[index];
             h._places.RemoveAt(index);
-            return obj;
+            return air;
         }
 
         /// <summary>

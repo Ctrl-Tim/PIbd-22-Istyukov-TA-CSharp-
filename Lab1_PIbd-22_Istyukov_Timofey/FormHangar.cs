@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +18,16 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// </summary>
         private readonly HangarCollection hangarCollection;
 
+        /// <summary>
+        /// Логгер 
+        /// </summary>
+        private readonly Logger logger;
+
         public FormHangar()
         {
             InitializeComponent();
             hangarCollection = new HangarCollection(pictureBoxHangar.Width, pictureBoxHangar.Height);
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         /// <summary>
@@ -69,10 +76,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (string.IsNullOrEmpty(textBoxNewLevelName.Text))
             {
+                logger.Warn("Не введено название ангара");
                 MessageBox.Show("Введите название ангара", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            logger.Info($"Добавили ангар {textBoxNewLevelName.Text}");
             hangarCollection.AddHangar(textBoxNewLevelName.Text);
             ReloadLevels();
         }
@@ -88,6 +96,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             {
                 if (MessageBox.Show($"Удалить ангар {listBoxHangars.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    logger.Info($"Удалили ангар {listBoxHangars.SelectedItem.ToString()}");
                     hangarCollection.DelHangar(listBoxHangars.SelectedItem.ToString());
                     ReloadLevels();
                 }
@@ -115,16 +124,30 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (listBoxHangars.SelectedIndex > -1 && maskedTextBox.Text != "")
             {
-                var air = hangarCollection[listBoxHangars.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
-                if (air != null)
+                try
                 {
-                    FormPlane form = new FormPlane();
-                    Random rnd = new Random();
-                    air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), form.Width - 12, form.Height - 80);
-                    form.SetAir(air);
-                    form.ShowDialog();
+                    var air = hangarCollection[listBoxHangars.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
+                    if (air != null)
+                    {
+                        FormPlane form = new FormPlane();
+                        Random rnd = new Random();
+                        air.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), form.Width - 12, form.Height - 80);
+                        form.SetAir(air);
+                        form.ShowDialog();
+                        logger.Info($"Изъят самолёт {air} с места {maskedTextBox.Text}");
+                        Draw();
+                    }
                 }
-                Draw();
+                catch (HangarNotFoundException ex)
+                {
+                    logger.Warn("Не найдено");
+                    MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn("Неизвестная ошибка");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -135,6 +158,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <param name="e"></param> 
         private void listBoxHangars_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logger.Info($"Перешли на ангар {listBoxHangars.SelectedItem.ToString()}");
             Draw();
         }
 
@@ -146,13 +170,29 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (air != null && listBoxHangars.SelectedIndex > -1)
             {
-                if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + air == 1)
+                try
                 {
+                    if ((hangarCollection[listBoxHangars.SelectedItem.ToString()]) + air == 1)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен самолёт {air}");
+                    }
+                    else
+                    {
+                        logger.Warn("Самолет не удалось поставить");
+                        MessageBox.Show("Самолёт не удалось поставить");
+                    }
                     Draw();
                 }
-                else
+                catch (HangarOverflowException ex)
                 {
-                    MessageBox.Show("Самолёт не удалось поставить");
+                    logger.Warn("Переполнение");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn("Неизвестная ошибка");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -166,13 +206,16 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (hangarCollection.SaveData(saveFileDialog.FileName))
+                try
                 {
+                    hangarCollection.SaveData(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warn("Неизвестная ошибка при сохранении");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -186,15 +229,22 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (hangarCollection.LoadData(openFileDialog.FileName))
+                try
                 {
+                    hangarCollection.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (HangarOverflowException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn("Неизвестная ошибка при сохранении");
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

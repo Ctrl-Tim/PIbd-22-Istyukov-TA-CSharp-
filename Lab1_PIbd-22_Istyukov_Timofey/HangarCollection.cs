@@ -153,11 +153,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException("Неверный формат файла");
             }
             using (StreamReader fs = new StreamReader(filename))
             {
@@ -166,7 +166,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                 if (!strs.Contains("HangarCollection"))
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new ArgumentException("Неверный формат файла");
                 }
                 hangarStages.Clear(); //если есть, то очищаем записи
                 Vehicle air = null;
@@ -191,11 +191,10 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                         }
                         if (hangarStages[key] + air != 1)
                         {
-                            return false;
+                            throw new IndexOutOfRangeException("Не удалось загрузить самолёт в ангар");
                         }
                     }
                 }
-                return true;
             }
         }
     }
