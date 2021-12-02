@@ -58,6 +58,26 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             MiniBombs = miniBombs;
         }
 
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info"></param>
+        public FighterPlane(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 8)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+                DopColor = Color.FromName(strs[3]);
+                FrontPlane = Convert.ToBoolean(strs[4]);
+                SideBombs = Convert.ToBoolean(strs[5]);
+                BigBombs = Convert.ToBoolean(strs[6]);
+                MiniBombs = Convert.ToBoolean(strs[7]);
+            }
+        }
+
         public override void DrawTransport(Graphics g)
         {
             Pen pen = new Pen(Color.Black); Brush dopBrush = new SolidBrush(DopColor);
@@ -159,6 +179,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}{separator}{DopColor.Name}{separator}{FrontPlane}{separator}{SideBombs}{separator}{BigBombs}{separator}{MiniBombs}";
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             if (h._places.Count >= h._maxCount)
             {
-                return -1;
+                throw new HangarOverflowException();
             }
             h._places.Add(air);
             return 1;
@@ -84,13 +84,13 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         /// <returns></returns>
         public static T operator -(Hangar<T> h, int index)
         {
-            if (index < 0 || index > h._places.Count)
+            if (index < -1 || index > h._places.Count)
             {
-                return null;
+                throw new HangarNotFoundException(index);
             }
-            T obj = h._places[index];
+            T air = h._places[index];
             h._places.RemoveAt(index);
-            return obj;
+            return air;
         }
 
         /// <summary>
@@ -142,6 +142,21 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
 
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
             }
+        }
+
+        /// <summary>
+        /// Функция получения элементы из списка
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+
+            return _places[index];
         }
     }
 }
