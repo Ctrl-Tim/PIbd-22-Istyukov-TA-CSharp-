@@ -1,0 +1,197 @@
+﻿
+namespace Lab1_PIbd_22_Istyukov_Timofey
+{
+    partial class FormHangar
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.pictureBoxHangar = new System.Windows.Forms.PictureBox();
+            this.buttonTakeAir_Clic = new System.Windows.Forms.Button();
+            this.labelIndex = new System.Windows.Forms.Label();
+            this.groupBoxTakeAir = new System.Windows.Forms.GroupBox();
+            this.buttonAddHangar_Click = new System.Windows.Forms.Button();
+            this.listBoxHangars = new System.Windows.Forms.ListBox();
+            this.buttonDelHangar_Click = new System.Windows.Forms.Button();
+            this.buttonSetAir_Click = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxNewLevelName = new System.Windows.Forms.MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
+            this.groupBoxTakeAir.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pictureBoxHangar
+            // 
+            this.pictureBoxHangar.Location = new System.Drawing.Point(4, 3);
+            this.pictureBoxHangar.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxHangar.Name = "pictureBoxHangar";
+            this.pictureBoxHangar.Size = new System.Drawing.Size(735, 455);
+            this.pictureBoxHangar.TabIndex = 1;
+            this.pictureBoxHangar.TabStop = false;
+            // 
+            // buttonTakeAir_Clic
+            // 
+            this.buttonTakeAir_Clic.Location = new System.Drawing.Point(5, 48);
+            this.buttonTakeAir_Clic.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTakeAir_Clic.Name = "buttonTakeAir_Clic";
+            this.buttonTakeAir_Clic.Size = new System.Drawing.Size(127, 26);
+            this.buttonTakeAir_Clic.TabIndex = 13;
+            this.buttonTakeAir_Clic.Text = "Забрать";
+            this.buttonTakeAir_Clic.UseVisualStyleBackColor = true;
+            this.buttonTakeAir_Clic.Click += new System.EventHandler(this.buttonTakeAir_Clic_Click_1);
+            // 
+            // labelIndex
+            // 
+            this.labelIndex.AutoSize = true;
+            this.labelIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelIndex.Location = new System.Drawing.Point(23, 24);
+            this.labelIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelIndex.Name = "labelIndex";
+            this.labelIndex.Size = new System.Drawing.Size(52, 16);
+            this.labelIndex.TabIndex = 12;
+            this.labelIndex.Text = "Место:";
+            // 
+            // groupBoxTakeAir
+            // 
+            this.groupBoxTakeAir.Controls.Add(this.maskedTextBox);
+            this.groupBoxTakeAir.Controls.Add(this.labelIndex);
+            this.groupBoxTakeAir.Controls.Add(this.buttonTakeAir_Clic);
+            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 361);
+            this.groupBoxTakeAir.Name = "groupBoxTakeAir";
+            this.groupBoxTakeAir.Size = new System.Drawing.Size(137, 88);
+            this.groupBoxTakeAir.TabIndex = 14;
+            this.groupBoxTakeAir.TabStop = false;
+            this.groupBoxTakeAir.Text = "Забрать самолёт";
+            // 
+            // buttonAddHangar_Click
+            // 
+            this.buttonAddHangar_Click.Location = new System.Drawing.Point(743, 55);
+            this.buttonAddHangar_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddHangar_Click.Name = "buttonAddHangar_Click";
+            this.buttonAddHangar_Click.Size = new System.Drawing.Size(137, 20);
+            this.buttonAddHangar_Click.TabIndex = 17;
+            this.buttonAddHangar_Click.Text = "Добавить ангар";
+            this.buttonAddHangar_Click.UseVisualStyleBackColor = true;
+            this.buttonAddHangar_Click.Click += new System.EventHandler(this.buttonAddHangar_Click_Click);
+            // 
+            // listBoxHangars
+            // 
+            this.listBoxHangars.FormattingEnabled = true;
+            this.listBoxHangars.Location = new System.Drawing.Point(743, 79);
+            this.listBoxHangars.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxHangars.Name = "listBoxHangars";
+            this.listBoxHangars.Size = new System.Drawing.Size(138, 82);
+            this.listBoxHangars.TabIndex = 18;
+            this.listBoxHangars.SelectedIndexChanged += new System.EventHandler(this.listBoxHangars_SelectedIndexChanged);
+            // 
+            // buttonDelHangar_Click
+            // 
+            this.buttonDelHangar_Click.Location = new System.Drawing.Point(743, 165);
+            this.buttonDelHangar_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelHangar_Click.Name = "buttonDelHangar_Click";
+            this.buttonDelHangar_Click.Size = new System.Drawing.Size(137, 20);
+            this.buttonDelHangar_Click.TabIndex = 19;
+            this.buttonDelHangar_Click.Text = "Удалить ангар";
+            this.buttonDelHangar_Click.UseVisualStyleBackColor = true;
+            this.buttonDelHangar_Click.Click += new System.EventHandler(this.buttonDelHangar_Click_Click);
+            // 
+            // buttonSetAir_Click
+            // 
+            this.buttonSetAir_Click.Location = new System.Drawing.Point(743, 201);
+            this.buttonSetAir_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSetAir_Click.Name = "buttonSetAir_Click";
+            this.buttonSetAir_Click.Size = new System.Drawing.Size(137, 39);
+            this.buttonSetAir_Click.TabIndex = 20;
+            this.buttonSetAir_Click.Text = "Добавить самолёт";
+            this.buttonSetAir_Click.UseVisualStyleBackColor = true;
+            this.buttonSetAir_Click.Click += new System.EventHandler(this.buttonSetAir_Click_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(783, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 17);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Ангары:";
+            // 
+            // maskedTextBox
+            // 
+            this.maskedTextBox.Location = new System.Drawing.Point(79, 22);
+            this.maskedTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBox.Name = "maskedTextBox";
+            this.maskedTextBox.Size = new System.Drawing.Size(32, 20);
+            this.maskedTextBox.TabIndex = 22;
+            // 
+            // textBoxNewLevelName
+            // 
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(743, 29);
+            this.textBoxNewLevelName.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxNewLevelName.Name = "textBoxNewLevelName";
+            this.textBoxNewLevelName.Size = new System.Drawing.Size(138, 20);
+            this.textBoxNewLevelName.TabIndex = 22;
+            // 
+            // FormHangar
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.textBoxNewLevelName);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonSetAir_Click);
+            this.Controls.Add(this.buttonDelHangar_Click);
+            this.Controls.Add(this.listBoxHangars);
+            this.Controls.Add(this.buttonAddHangar_Click);
+            this.Controls.Add(this.groupBoxTakeAir);
+            this.Controls.Add(this.pictureBoxHangar);
+            this.Name = "FormHangar";
+            this.Text = "Ангар";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
+            this.groupBoxTakeAir.ResumeLayout(false);
+            this.groupBoxTakeAir.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.PictureBox pictureBoxHangar;
+        private System.Windows.Forms.Button buttonTakeAir_Clic;
+        private System.Windows.Forms.Label labelIndex;
+        private System.Windows.Forms.GroupBox groupBoxTakeAir;
+        private System.Windows.Forms.Button buttonAddHangar_Click;
+        private System.Windows.Forms.ListBox listBoxHangars;
+        private System.Windows.Forms.Button buttonDelHangar_Click;
+        private System.Windows.Forms.Button buttonSetAir_Click;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox;
+        private System.Windows.Forms.MaskedTextBox textBoxNewLevelName;
+    }
+}
