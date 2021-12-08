@@ -20,6 +20,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         protected readonly int airHeight = 103;
 
         /// <summary>
+        /// Разделитель для записи информации по объекту в файл
+        /// </summary>
+        protected readonly char separator = ';';
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="maxSpeed">Максимальная скорость</param>
@@ -30,6 +35,21 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
+        }
+
+        /// <summary>
+        /// Конструктор для загрузки с файла
+        /// </summary>
+        /// <param name="info">Информация по объекту</param>
+        public WarPlane(string info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 3)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromName(strs[2]);
+            }
         }
 
         /// <summary>
@@ -136,6 +156,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                 new PointF(_startPosX + 15, _startPosY + 58) };
             g.FillPolygon(brBlack, nose);
             g.DrawPolygon(pen, nose); //обведём
+        }
+
+        public override string ToString()
+        {
+            return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
         }
     }
 }
