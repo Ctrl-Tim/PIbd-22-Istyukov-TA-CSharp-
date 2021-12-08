@@ -40,16 +40,23 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.label3 = new System.Windows.Forms.Label();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.textBoxNewLevelName = new System.Windows.Forms.MaskedTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBoxTakeAir.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxHangar
             // 
-            this.pictureBoxHangar.Location = new System.Drawing.Point(4, 3);
+            this.pictureBoxHangar.Location = new System.Drawing.Point(4, 29);
             this.pictureBoxHangar.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxHangar.Name = "pictureBoxHangar";
-            this.pictureBoxHangar.Size = new System.Drawing.Size(735, 455);
+            this.pictureBoxHangar.Size = new System.Drawing.Size(735, 429);
             this.pictureBoxHangar.TabIndex = 1;
             this.pictureBoxHangar.TabStop = false;
             // 
@@ -80,7 +87,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.groupBoxTakeAir.Controls.Add(this.maskedTextBox);
             this.groupBoxTakeAir.Controls.Add(this.labelIndex);
             this.groupBoxTakeAir.Controls.Add(this.buttonTakeAir_Clic);
-            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 361);
+            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 280);
             this.groupBoxTakeAir.Name = "groupBoxTakeAir";
             this.groupBoxTakeAir.Size = new System.Drawing.Size(137, 88);
             this.groupBoxTakeAir.TabIndex = 14;
@@ -89,7 +96,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonAddHangar_Click
             // 
-            this.buttonAddHangar_Click.Location = new System.Drawing.Point(743, 55);
+            this.buttonAddHangar_Click.Location = new System.Drawing.Point(743, 77);
             this.buttonAddHangar_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAddHangar_Click.Name = "buttonAddHangar_Click";
             this.buttonAddHangar_Click.Size = new System.Drawing.Size(137, 20);
@@ -101,7 +108,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // listBoxHangars
             // 
             this.listBoxHangars.FormattingEnabled = true;
-            this.listBoxHangars.Location = new System.Drawing.Point(743, 79);
+            this.listBoxHangars.Location = new System.Drawing.Point(743, 101);
             this.listBoxHangars.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxHangars.Name = "listBoxHangars";
             this.listBoxHangars.Size = new System.Drawing.Size(138, 82);
@@ -110,7 +117,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonDelHangar_Click
             // 
-            this.buttonDelHangar_Click.Location = new System.Drawing.Point(743, 165);
+            this.buttonDelHangar_Click.Location = new System.Drawing.Point(743, 187);
             this.buttonDelHangar_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelHangar_Click.Name = "buttonDelHangar_Click";
             this.buttonDelHangar_Click.Size = new System.Drawing.Size(137, 20);
@@ -121,7 +128,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonSetAir_Click
             // 
-            this.buttonSetAir_Click.Location = new System.Drawing.Point(743, 201);
+            this.buttonSetAir_Click.Location = new System.Drawing.Point(743, 223);
             this.buttonSetAir_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetAir_Click.Name = "buttonSetAir_Click";
             this.buttonSetAir_Click.Size = new System.Drawing.Size(137, 39);
@@ -134,7 +141,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(783, 8);
+            this.label3.Location = new System.Drawing.Point(783, 30);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 17);
@@ -151,17 +158,61 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // textBoxNewLevelName
             // 
-            this.textBoxNewLevelName.Location = new System.Drawing.Point(743, 29);
+            this.textBoxNewLevelName.Location = new System.Drawing.Point(743, 51);
             this.textBoxNewLevelName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxNewLevelName.Name = "textBoxNewLevelName";
             this.textBoxNewLevelName.Size = new System.Drawing.Size(138, 20);
             this.textBoxNewLevelName.TabIndex = 22;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip1.TabIndex = 23;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click_1);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click_1);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "saveFileDialog";
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "txt file | *.txt";
             // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonSetAir_Click);
@@ -175,6 +226,8 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).EndInit();
             this.groupBoxTakeAir.ResumeLayout(false);
             this.groupBoxTakeAir.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +246,11 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox;
         private System.Windows.Forms.MaskedTextBox textBoxNewLevelName;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
