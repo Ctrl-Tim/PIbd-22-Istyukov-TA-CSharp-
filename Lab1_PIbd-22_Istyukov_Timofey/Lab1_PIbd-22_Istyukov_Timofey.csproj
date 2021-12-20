@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirComparer.cs" />
     <Compile Include="FighterPlane.cs" />
     <Compile Include="Direaction.cs" />
     <Compile Include="FormAirConfig.cs">
@@ -75,6 +76,7 @@
       <DependentUpon>FormPlane.cs</DependentUpon>
     </Compile>
     <Compile Include="Hangar.cs" />
+    <Compile Include="HangarAlreadyHaveException.cs" />
     <Compile Include="HangarCollection.cs" />
     <Compile Include="HangarNotFoundException.cs" />
     <Compile Include="HangarOverflowException.cs" />
