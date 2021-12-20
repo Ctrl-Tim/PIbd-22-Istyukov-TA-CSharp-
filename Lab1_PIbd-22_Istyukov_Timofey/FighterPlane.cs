@@ -10,7 +10,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
     /// <summary>
     /// Класс отрисовки истребителя
     /// </summary> 
-    class FighterPlane : WarPlane
+    class FighterPlane : WarPlane, IEquatable<FighterPlane>
     {
         /// <summary>
         /// Дополнительный цвет
@@ -186,5 +186,65 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         {
             return $"{base.ToString()}{separator}{DopColor.Name}{separator}{FrontPlane}{separator}{SideBombs}{separator}{BigBombs}{separator}{MiniBombs}";
         }
+
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса FighterPlane
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(FighterPlane other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (FrontPlane != other.FrontPlane)
+            {
+                return false;
+            }
+            if (SideBombs != other.SideBombs)
+            {
+                return false;
+            }
+            if (BigBombs != other.BigBombs)
+            {
+                return false;
+            }
+            if (MiniBombs != other.MiniBombs)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            { 
+                return false;
+            } 
+ 
+            if (!(obj is FighterPlane airObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(airObj);
+            }
+        }   
     }
 }

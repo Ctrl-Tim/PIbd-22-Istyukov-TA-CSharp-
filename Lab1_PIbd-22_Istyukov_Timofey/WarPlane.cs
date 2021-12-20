@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Lab1_PIbd_22_Istyukov_Timofey
 {
-    public class WarPlane : Vehicle
+    public class WarPlane : Vehicle, IEquatable<WarPlane>
     {
         /// <summary>
         /// Ширина отрисовки самолёта
@@ -161,6 +161,58 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         public override string ToString()
         {
             return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+        }
+
+        /// <summary>
+        /// Метод интерфейса IEquatable для класса WarPlane
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(WarPlane other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Перегрузка метода от object
+        /// </summary>
+        /// <param name="obj"></param
+        /// <returns></returns>
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is WarPlane airObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(airObj);
+            }
         }
     }
 }
