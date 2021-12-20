@@ -94,16 +94,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             }
         }
 
-        /// <summary>
-        /// Метод записи информации в файл
-        /// </summary>
-        /// <param name="text">Строка, которую следует записать</param>
-        /// <param name="stream">Поток для записи</param>
-        private void WriteToFile(string text, FileStream stream)
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes(text);
-            stream.Write(info, 0, info.Length);
-        }
 
         ITransport air = null;
 
