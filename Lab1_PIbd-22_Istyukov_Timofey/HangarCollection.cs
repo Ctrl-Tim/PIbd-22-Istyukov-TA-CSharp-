@@ -105,6 +105,8 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             stream.Write(info, 0, info.Length);
         }
 
+        ITransport air = null;
+
         /// <summary>
         /// Сохранение информации по самолётам в ангаре в файл
         /// </summary>
@@ -123,25 +125,20 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                 {
                     //Начинаем парковку
                     fs.Write($"Hangar{separator}{level.Key}{Environment.NewLine}");
-                    fs.Write(Environment.NewLine);
-                    ITransport air = null;
-                    for (int i = 0; (air = level.Value.GetNext(i)) != null; i++)
+                    foreach (ITransport air in level.Value)
                     {
-                        if (air != null)
+                        //если место не пустое
+                        //Записываем тип самолёта
+                        if (air.GetType().Name == "WarPlane")
                         {
-                            //если место не пустое
-                            //Записываем тип самолёта
-                            if (air.GetType().Name == "WarPlane")
-                            {
-                                fs.Write($"WarPlane{separator}");
-                            }
-                            if (air.GetType().Name == "FighterPlane")
-                            {
-                                fs.Write($"FighterPlane{separator}");
-                            }
-                            //Записываемые параметры
-                            fs.Write(air + Environment.NewLine);
+                            fs.Write($"WarPlane{separator}");
                         }
+                        if (air.GetType().Name == "FighterPlane")
+                        {
+                            fs.Write($"FighterPlane{separator}");
+                        }
+                        //Записываемые параметры
+                        fs.Write(air + Environment.NewLine);
                     }
                 }
             }
