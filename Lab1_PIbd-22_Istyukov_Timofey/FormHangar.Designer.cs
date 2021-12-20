@@ -33,12 +33,12 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.buttonTakeAir_Clic = new System.Windows.Forms.Button();
             this.labelIndex = new System.Windows.Forms.Label();
             this.groupBoxTakeAir = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.buttonAddHangar_Click = new System.Windows.Forms.Button();
             this.listBoxHangars = new System.Windows.Forms.ListBox();
             this.buttonDelHangar_Click = new System.Windows.Forms.Button();
             this.buttonSetAir_Click = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.textBoxNewLevelName = new System.Windows.Forms.MaskedTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSort_Click = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHangar)).BeginInit();
             this.groupBoxTakeAir.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -87,12 +88,20 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.groupBoxTakeAir.Controls.Add(this.maskedTextBox);
             this.groupBoxTakeAir.Controls.Add(this.labelIndex);
             this.groupBoxTakeAir.Controls.Add(this.buttonTakeAir_Clic);
-            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 280);
+            this.groupBoxTakeAir.Location = new System.Drawing.Point(744, 367);
             this.groupBoxTakeAir.Name = "groupBoxTakeAir";
             this.groupBoxTakeAir.Size = new System.Drawing.Size(137, 88);
             this.groupBoxTakeAir.TabIndex = 14;
             this.groupBoxTakeAir.TabStop = false;
             this.groupBoxTakeAir.Text = "Забрать самолёт";
+            // 
+            // maskedTextBox
+            // 
+            this.maskedTextBox.Location = new System.Drawing.Point(79, 22);
+            this.maskedTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBox.Name = "maskedTextBox";
+            this.maskedTextBox.Size = new System.Drawing.Size(32, 20);
+            this.maskedTextBox.TabIndex = 22;
             // 
             // buttonAddHangar_Click
             // 
@@ -128,7 +137,7 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // 
             // buttonSetAir_Click
             // 
-            this.buttonSetAir_Click.Location = new System.Drawing.Point(743, 223);
+            this.buttonSetAir_Click.Location = new System.Drawing.Point(743, 310);
             this.buttonSetAir_Click.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSetAir_Click.Name = "buttonSetAir_Click";
             this.buttonSetAir_Click.Size = new System.Drawing.Size(137, 39);
@@ -147,14 +156,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.label3.Size = new System.Drawing.Size(60, 17);
             this.label3.TabIndex = 21;
             this.label3.Text = "Ангары:";
-            // 
-            // maskedTextBox
-            // 
-            this.maskedTextBox.Location = new System.Drawing.Point(79, 22);
-            this.maskedTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.maskedTextBox.Name = "maskedTextBox";
-            this.maskedTextBox.Size = new System.Drawing.Size(32, 20);
-            this.maskedTextBox.TabIndex = 22;
             // 
             // textBoxNewLevelName
             // 
@@ -186,14 +187,14 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click_1);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click_1);
             // 
@@ -207,11 +208,23 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort_Click
+            // 
+            this.buttonSort_Click.Location = new System.Drawing.Point(743, 239);
+            this.buttonSort_Click.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSort_Click.Name = "buttonSort_Click";
+            this.buttonSort_Click.Size = new System.Drawing.Size(137, 39);
+            this.buttonSort_Click.TabIndex = 24;
+            this.buttonSort_Click.Text = "Сортировать";
+            this.buttonSort_Click.UseVisualStyleBackColor = true;
+            this.buttonSort_Click.Click += new System.EventHandler(this.buttonSort_Click_Click);
+            // 
             // FormHangar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.buttonSort_Click);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBoxNewLevelName);
             this.Controls.Add(this.label3);
@@ -252,5 +265,6 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button buttonSort_Click;
     }
 }

@@ -189,6 +189,10 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                     logger.Warn("Переполнение");
                     MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                catch (HangarAlreadyHaveException ex)
+                {
+                    MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 catch (Exception ex)
                 {
                     logger.Warn("Неизвестная ошибка");
@@ -246,6 +250,21 @@ namespace Lab1_PIbd_22_Istyukov_Timofey
                     logger.Warn("Неизвестная ошибка при сохранении");
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Обработка нажатия кнопки "Сортировка"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param> 
+        private void buttonSort_Click_Click(object sender, EventArgs e)
+        {
+            if (listBoxHangars.SelectedIndex > -1)
+            {
+                hangarCollection[listBoxHangars.SelectedItem.ToString()].Sort();
+                Draw();
+                logger.Info("Сортировка уровней");
             }
         }
     }
